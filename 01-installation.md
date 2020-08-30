@@ -40,6 +40,7 @@ kubectl create clusterrolebinding cluster-admin-binding \
 ```
 export ISTIO_VERSION=1.7.0
 curl -L https://git.io/getLatestIstio | ISTIO_VERSION=$ISTIO_VERSION sh -
+cd istio-${ISTIO_VERSION}
 export PATH=$PWD/bin:$PATH
 
 
@@ -53,7 +54,18 @@ export PATH=$PWD/bin:$PATH
 |     istio-ingressgateway | X       | X    |         |        |
 |     istiod               | X       | X    | X       |        |
 
-
+### Installation using istioctl
 ```
 istioctl install --set profile=demo
+kubectl -n istio-system get pods
+```
+
+### Intslallation using helm
+```
+helm template manifests/charts/istio-operator/ \
+  --set hub=docker.io/istio \
+  --set tag=1.7.0 \
+  --set operatorNamespace=istio-operator \
+  --set watchedNamespaces=istio-system | kubectl apply -f -
+
 ```
