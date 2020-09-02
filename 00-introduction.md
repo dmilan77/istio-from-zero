@@ -3,9 +3,8 @@
 During the workshop, we will walk through the following topics:
 
 ## Part 1: Introduce service mesh
-
-- Provision a Kubernetes Cluster
 - Service Mesh Overview
+- Provision a Kubernetes Cluster
 - Install Istio
 - Deploy sample application
 - Dashboards Tour

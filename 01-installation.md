@@ -3,9 +3,7 @@
 - Provision a Kubernetes Cluster
 - Service Mesh Overview
 - Install Istio
-- Deploy sample application
-- Dashboards Tour
-- Configure DNS
+
 
 ## Provision a Kubernetes Cluster
 ```

@@ -1,21 +1,26 @@
 ## install the app
+- Deploy sample application
+- Dashboards Tour
+- Configure DNS
 
 ```
-kubectl create ns book-info
-kubectl -n book-info apply -f <(istioctl kube-inject -f samples/bookinfo/platform/kube/bookinfo.yaml)
+export NS=book-info
+kubectl create ns ${NS}
+kubectl -n ${NS} apply -f <(istioctl kube-inject -f samples/bookinfo/platform/kube/bookinfo.yaml)
+
 ```
-# kubectl label namespace book-info istio-injection=enabled
+# kubectl label namespace ${NS} istio-injection=enabled
 
 ## verify the app
 ```
-kubectl -n book-info exec "$(kubectl -n book-info get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}')" -c ratings -- curl productpage:9080/produ
-ctpage
+kubectl -n ${NS} exec "$(kubectl -n ${NS} get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}')" -c ratings -- curl productpage:9080/productpage
+
 ```
 
 ## Install ingress gateway
 ```
-kubectl -n book-info apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
-kubectl -n book-info  get gateway
+kubectl -n ${NS} apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
+kubectl -n ${NS}  get gateway
 
 ```
 
