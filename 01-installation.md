@@ -31,6 +31,7 @@ gcloud container clusters get-credentials $CLUSTER_NAME \
 kubectl create clusterrolebinding cluster-admin-binding \
   --clusterrole=cluster-admin \
   --user=$(gcloud config get-value core/account)
+
 ```
 
 ## Install ISTIO
